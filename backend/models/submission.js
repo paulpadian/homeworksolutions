@@ -17,16 +17,16 @@ const commentSchema = new mongoose.Schema({
 
 const submissionSchema = new mongoose.Schema({
     name: {
-      type: String,
-      required: true
+        type: String,
+        required: true
     },
     title: {
-      type: String,
-      required: true
+        type: String,
+        required: true
     },
     location: {
-      type: String,
-      required: true
+         type: String,
+        required: true
     },
     assignment: {
         type: String,
