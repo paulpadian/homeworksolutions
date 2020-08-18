@@ -6,16 +6,19 @@ class AuthService {
   login(user) {
     return axios
       .post(API_URL + 'login', {
-        username: user.username,
+        email: user.email,
         password: user.password
       })
       .then(response => {
-        if (response.data.accessToken) {
+        if (response.data.token) {
           localStorage.setItem('user', JSON.stringify(response.data));
         }
-
+        console.log(response.data)
         return response.data;
-      });
+      })
+      .catch(err => {
+          console.log(err)
+      })
   }
 
   logout() {
