@@ -1,7 +1,7 @@
 <template>
     <div class="jumbotron"> 
       <h1>Submit a Homework</h1>
-        <form>
+        <form name="form" @submit.prevent="handleSubmit">
             <div class="form-group">
             <label for="name">Name</label>
             <input
@@ -37,9 +37,10 @@
 </template>
 
 <script>
-
+import SubmissionService from '../services/submission.service'
 export default {
-    name: 'Profile',
+    
+    name: 'Submission',
     components: {
 
     },
@@ -54,6 +55,15 @@ export default {
      mounted() {
         if(!this.currentUser) {
             this.$router.push('/login')
+        }
+    },
+    methods: {
+        handleSubmit() {
+            SubmissionService.submitOne()
+            .then((response) => {
+                console.log(response)
+            })
+            .catch(err => console.log(err))
         }
     }
 }

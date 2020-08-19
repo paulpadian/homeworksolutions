@@ -1,6 +1,6 @@
 import axios from 'axios'
 const API_URL = 'http://localhost:5000/submission/';
-
+import authHeader from './auth-header'
 class SubmissionService {
     getAll() {
         return axios
@@ -21,9 +21,8 @@ class SubmissionService {
       }
     submitOne() {
         return axios 
-            .post(API_URL + 'submit/:id', {
-
-            })
+            .post(API_URL + 'submit/', { headers : authHeader() }
+            )
             .then(response => {
                 console.log(response)
             })
