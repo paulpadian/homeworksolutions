@@ -8,19 +8,19 @@
       />
       <form name="form" @submit.prevent="handleRegister">
         <div v-if="!successful">
-          <div class="form-group">
-            <label for="username">Username</label>
+            <div class="form-group">
+            <label for="bio">Name</label>
             <input
-              v-model="user.username"
-              v-validate="'required|min:3|max:20'"
+              v-model="user.name"
+              v-validate="'required|min:3|max:100'"
               type="text"
               class="form-control"
-              name="username"
+              name="name"
             />
             <div
-              v-if="submitted && errors.has('username')"
+              v-if="submitted && errors.has('bio')"
               class="alert-danger"
-            >{{errors.first('username')}}</div>
+            >{{errors.first('bio')}}</div>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
@@ -49,6 +49,35 @@
               v-if="submitted && errors.has('password')"
               class="alert-danger"
             >{{errors.first('password')}}</div>
+          </div>
+          <div class="form-group">
+            <label for="passwordCheck">Confirm Password</label>
+            <input
+              v-model="user.passwordCheck"
+              v-validate="'required|min:6|max:40'"
+              type="password"
+              class="form-control"
+              name="passwordCheck"
+            />
+            
+            <div
+              v-if="submitted && errors.has('password')"
+              class="alert-danger"
+            >{{errors.first('password')}}</div>
+          </div>
+           <div class="form-group">
+            <label for="bio">Bio</label>
+            <input
+              v-model="user.bio"
+              v-validate="'required|min:3|max:600'"
+              type="text"
+              class="form-control"
+              name="bio"
+            />
+            <div
+              v-if="submitted && errors.has('bio')"
+              class="alert-danger"
+            >{{errors.first('bio')}}</div>
           </div>
           <div class="form-group">
             <button class="btn btn-primary btn-block">Sign Up</button>
@@ -85,7 +114,7 @@ export default {
   },
   mounted() {
     if (this.loggedIn) {
-      this.$router.push('/profile');
+      this.$router.push('/login');
     }
   },
   methods: {

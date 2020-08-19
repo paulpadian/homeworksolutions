@@ -17,7 +17,8 @@ class AuthService {
         return response.data;
       })
       .catch(err => {
-          console.log(err)
+        console.log('throwing')
+          throw err
       })
   }
 
@@ -27,7 +28,7 @@ class AuthService {
 
   register(user) {
     return axios.post(API_URL + 'register', {
-      name: user.username,
+      name: user.name,
       email: user.email,
       password: user.password,
       passwordCheck: user.passwordCheck,

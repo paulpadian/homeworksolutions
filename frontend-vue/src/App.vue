@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <div class="container">
       <a href class="navbar-brand" @click.prevent>Homework-Solutions</a>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
@@ -34,9 +35,11 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href @click.prevent="logOut">
-           Log Out
+           Sign out
           </a>
         </li>
+        
+      </div>
       </div>
     </nav>
 
@@ -51,20 +54,6 @@ export default {
   computed: {
     currentUser() {
       return this.$store.state.auth.user;
-    },
-    showAdminBoard() {
-      if (this.currentUser && this.currentUser.roles) {
-        return this.currentUser.roles.includes('ROLE_ADMIN');
-      }
-
-      return false;
-    },
-    showModeratorBoard() {
-      if (this.currentUser && this.currentUser.roles) {
-        return this.currentUser.roles.includes('ROLE_MODERATOR');
-      }
-
-      return false;
     }
   },
   methods: {

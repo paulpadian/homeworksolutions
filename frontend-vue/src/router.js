@@ -1,8 +1,10 @@
 import Vue from 'vue';
-import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Router from 'vue-router'
+import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue';
+import Profile from './views/Profile.vue'
+
 
 Vue.use(Router);
 
@@ -15,10 +17,6 @@ export const router = new Router({
       component: Home
     },
     {
-      path: '/home',
-      component: Home
-    },
-    {
       path: '/login',
       component: Login
     },
@@ -26,19 +24,18 @@ export const router = new Router({
       path: '/register',
       component: Register
     },
-    // {
-    //   path: '/profile',
-    //   name: 'profile',
-    //   // lazy-loaded
-    //   component: () => import('./views/Profile.vue')
-    // },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile
+    },
    
  
   ]
 });
 
 router.beforeEach((to, from, next) => {
-    const publicPages = ['/login', '/register', '/home'];
+    const publicPages = ['/login', '/register', '/'];
     const authRequired = !publicPages.includes(to.path);
     const loggedIn = localStorage.getItem('user');
   
