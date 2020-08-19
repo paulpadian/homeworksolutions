@@ -5,12 +5,12 @@
       <a href class="navbar-brand" @click.prevent>Homework-Solutions</a>
       <div class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link to="/home" class="nav-link">
+          <router-link to="/" class="nav-link">
            Home
           </router-link>
         </li>     
         <li class="nav-item">
-          <router-link v-if="currentUser" to="/user" class="nav-link">User</router-link>
+          <router-link v-if="currentUser" to="/profile" class="nav-link">Profile</router-link>
         </li>
       </div>
 

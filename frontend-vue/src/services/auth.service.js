@@ -17,7 +17,6 @@ class AuthService {
         return response.data;
       })
       .catch(err => {
-        console.log('throwing')
           throw err
       })
   }

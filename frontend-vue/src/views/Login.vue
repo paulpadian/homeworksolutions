@@ -85,14 +85,15 @@ export default {
         if (this.user.email && this.user.password) {
           this.$store.dispatch('auth/login', this.user).then(
             () => {
-              this.$router.push('profile');
+              this.$router.push('/profile');
             },
             
           ).catch(error => {
-            console.log("i'm here", error)
               this.loading = false;
-              // TODO: change backend response for failed login from an error to user facing feedback "no password/ email combination matched.. etc"
-              this.message = error.message?.msg ?? 'Something went wrong!'
+              this.message =
+                (error.response && error.response.data) ||
+                error.message ||
+                error.toString();
             });
         }
       });

@@ -1,3 +1,4 @@
+
 <template>
     <div> 
         <br />
@@ -5,18 +6,27 @@
         <hr />
         <br>
         <h3>These are open assignments:</h3>
+        <AssignmentList />
         <br />
         <hr />
         <br />
         <h3>These are your submissions: </h3>
         <div class="col">
+        <SubmissionList />
         </div>
     </div>
 </template>
 
 <script>
+import SubmissionList from '../components/SubmissionList'
+import AssignmentList from '../components/AssignmentList'
+
 export default {
     name: 'Profile',
+    components: {
+        SubmissionList,
+        AssignmentList
+    },
     computed: {
         currentUser() {
             console.log(this.$store.state.auth.user.user)
@@ -24,11 +34,13 @@ export default {
             return this.$store.state.auth.user.user
         }, 
     },
+    
      mounted() {
-            if(!this.currentUser) {
-                this.$router.push('/login')
-            }
+
+        if(!this.currentUser) {
+            this.$router.push('/login')
         }
+    }
 }
 </script>
 
